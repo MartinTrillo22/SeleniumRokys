@@ -32,6 +32,7 @@ public class MenuPage {
 
     private By btnFinalizarCompra = By.xpath("//button[normalize-space()='Finalizar tu compra']");
     private By tituloCheckout = By.xpath("//p[contains(@class,'text-[20px] font-bold p-2')]");
+    private By btnCerrarAnuncio = By.xpath("//button[@class='rounded-full text-white']//*[name()='svg']");
 
     public MenuPage(WebDriver driver) {
         this.driver = driver;
@@ -69,6 +70,27 @@ public class MenuPage {
 
     public void navegarAInicio() {
         driver.get("https://rokys.com/");
+        cerrarAnuncioSiAparece();
+    }
+
+    public void cerrarAnuncioSiAparece() {
+        try {
+            // Usamos una espera MUY CORTA (3 segundos) exclusiva para este anuncio
+            WebDriverWait waitCorto = new WebDriverWait(driver, Duration.ofSeconds(3));
+
+            // Intentamos encontrar y hacer clic en la "X"
+            WebElement btnCerrar = waitCorto.until(ExpectedConditions.elementToBeClickable(btnCerrarAnuncio));
+            btnCerrar.click();
+
+            System.out.println("Anuncio detectado y cerrado con éxito.");
+
+            // Pequeña pausa para que termine la animación de desvanecimiento del anuncio
+            Thread.sleep(1000);
+
+        } catch (Exception e) {
+            // Si pasan los 3 segundos y no hay anuncio, entra aquí, no hace nada y el test sigue su curso normal.
+            System.out.println("No se detectó el anuncio promocional. Continuando flujo...");
+        }
     }
 
     public void seleccionarProducto() {
