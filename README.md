@@ -18,22 +18,6 @@ Validar flujos críticos de la web:
 - TestNG 7.9.0
 - SLF4J Simple (scope test)
 
-## Estructura del Proyecto
-
-```text
-Rokys/
-  pom.xml
-  src/
-    main/java/
-      config/
-        DriverFactory.java
-      pages/
-        LoginPage.java
-        MenuPage.java
-    test/java/
-      tests/
-        RokysTest.java
-```
 
 ## Requisitos Previos
 
@@ -95,13 +79,3 @@ En `RokysTest`:
 - Las credenciales de pruebas no deberían quedar hardcodeadas en repositorios públicos.
 - Para un entorno productivo, se recomienda externalizar datos sensibles a variables de entorno o archivos de configuración no versionados.
 
-## Próximas Mejoras Recomendadas
-
-- Externalizar usuarios, contraseñas y direcciones de prueba.
-- Separar datos de prueba por ambiente (dev/qa/prod).
-- Generar reportes de ejecución (Surefire/Allure/Extent Reports).
-- Añadir `testng.xml` para controlar grupos, parámetros y orden de ejecución de forma explícita.
-
-## Autor
-
-Proyecto de práctica de automatización QA.
