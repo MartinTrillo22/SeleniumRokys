@@ -64,6 +64,7 @@ public class LoginPage {
     public boolean verificarLoginExitoso() {
         try {
             // Le decimos al robot que espere hasta 10 segundos a que aparezca tu perfil
+            cerrarAnuncioSiAparece();
             return wait.until(ExpectedConditions.visibilityOfElementLocated(indicadorSesionIniciada)).isDisplayed();
         } catch (Exception e) {
             // Si pasan los 10 segundos y no cargó tu perfil, el login falló
